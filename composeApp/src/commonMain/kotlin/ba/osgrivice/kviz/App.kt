@@ -1,0 +1,26 @@
+package ba.osgrivice.kviz
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+
+/**
+ * Dio 1 — privremeni početni ekran.
+ * Služi samo da potvrdi da se projekat gradi i pokreće na iOS-u.
+ * U narednim dijelovima ovdje dolazi tema i navigacija iz Android aplikacije.
+ */
+@Composable
+fun App() {
+    MaterialTheme {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            Box(contentAlignment = Alignment.Center) {
+                Text("Vjeronauka Kviz — iOS")
+            }
+        }
+    }
+}

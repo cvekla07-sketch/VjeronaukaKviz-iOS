@@ -1,0 +1,20 @@
+.gradle/
+build/
+*/build/
+.kotlin/
+local.properties
+.idea/
+*.iml
+.DS_Store
+
+# Xcode (projekat se generiše iz project.yml)
+iosApp/iosApp.xcodeproj/
+iosApp/iosApp/Info.plist
+xcuserdata/
+DerivedData/
+
+# Firebase konfiguracija i ključevi za potpis ne idu u repozitorij
+GoogleService-Info.plist
+*.p8
+*.p12
+*.mobileprovision
