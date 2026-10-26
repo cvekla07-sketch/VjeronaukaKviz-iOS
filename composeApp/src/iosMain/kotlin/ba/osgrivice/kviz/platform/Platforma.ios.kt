@@ -16,6 +16,7 @@ import platform.Foundation.create
 import platform.Foundation.decomposedStringWithCanonicalMapping
 import platform.Foundation.timeIntervalSince1970
 import platform.Foundation.writeToFile
+import platform.UIKit.popoverPresentationController
 
 actual fun sadaMs(): Long = (NSDate().timeIntervalSince1970 * 1000.0).toLong()
 
