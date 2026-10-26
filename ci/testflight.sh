@@ -17,7 +17,13 @@ for v in APPLE_TEAM_ID ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
 done
 
 KLJUC="$RUNNER_TEMP/AuthKey_${ASC_KEY_ID}.p8"
-printf '%s\n' "$ASC_KEY_P8" > "$KLJUC"
+# Ključ se normalizuje (Windows CRLF, razmaci, sve u jednom redu…) u ispravan PEM format
+TIJELO=$(printf '%s' "$ASC_KEY_P8" | tr -d '\r' | sed -e 's/-----BEGIN PRIVATE KEY-----//' -e 's/-----END PRIVATE KEY-----//' | tr -d ' \n\t')
+{ echo "-----BEGIN PRIVATE KEY-----"; echo "$TIJELO" | fold -w 64; echo "-----END PRIVATE KEY-----"; } > "$KLJUC"
+if [ ${#TIJELO} -lt 150 ]; then echo "::error title=TestFlight greske::ASC_KEY_P8 izgleda prekratak (${#TIJELO} znakova) — provjeri da je kopiran cijeli .p8 fajl"; exit 1; fi
+ASC_KEY_ID=$(printf '%s' "$ASC_KEY_ID" | tr -d ' \r\n\t')
+ASC_ISSUER_ID=$(printf '%s' "$ASC_ISSUER_ID" | tr -d ' \r\n\t')
+APPLE_TEAM_ID=$(printf '%s' "$APPLE_TEAM_ID" | tr -d ' \r\n\t')
 AUTH=(-allowProvisioningUpdates -authenticationKeyPath "$KLJUC" -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID")
 BROJ="${BUILD_BROJ:-1}"
 
