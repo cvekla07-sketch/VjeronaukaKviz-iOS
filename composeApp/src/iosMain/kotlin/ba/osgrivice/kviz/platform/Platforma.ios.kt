@@ -48,3 +48,19 @@ actual object LokalniKljucevi {
         if (vrijednost == null) ud.removeObjectForKey(kljuc) else ud.setObject(vrijednost, forKey = kljuc)
     }
 }
+
+@OptIn(ExperimentalForeignApi::class)
+actual fun podijeliFajl(sadrzaj: String, imeFajla: String, mimeTip: String, naslov: String) {
+    val putanja = platform.Foundation.NSTemporaryDirectory() + imeFajla
+    NSString.create(string = sadrzaj).writeToFile(
+        putanja, atomically = true, encoding = platform.Foundation.NSUTF8StringEncoding, error = null
+    )
+    val url = NSURL.fileURLWithPath(putanja)
+    val prozor = platform.UIKit.UIActivityViewController(activityItems = listOf(url), applicationActivities = null)
+    val korijen = platform.UIKit.UIApplication.sharedApplication.keyWindow?.rootViewController ?: return
+    var vrh: platform.UIKit.UIViewController = korijen
+    while (vrh.presentedViewController != null) vrh = vrh.presentedViewController!!
+    // iPad: prozor mora imati sidro
+    prozor.popoverPresentationController?.sourceView = vrh.view
+    vrh.presentViewController(prozor, animated = true, completion = null)
+}

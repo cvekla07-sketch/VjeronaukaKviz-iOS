@@ -25,3 +25,6 @@ expect object LokalniKljucevi {
     fun citaj(kljuc: String): String?
     fun pisi(kljuc: String, vrijednost: String?)
 }
+
+/** Sistemski "Podijeli" prozor za tekstualni fajl (CSV izvoz u nastavničkom pregledu). */
+expect fun podijeliFajl(sadrzaj: String, imeFajla: String, mimeTip: String, naslov: String)

@@ -35,6 +35,10 @@ kotlin {
             implementation(libs.androidx.sqlite.bundled)
             implementation(libs.androidx.datastore.preferences.core)
             implementation(libs.ktor.client.core)
+            implementation(libs.jetbrains.lifecycle.viewmodel.compose)
+            implementation(libs.jetbrains.lifecycle.runtime.compose)
+            implementation(libs.jetbrains.navigation.compose)
+            implementation(libs.compose.ui.backhandler)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
