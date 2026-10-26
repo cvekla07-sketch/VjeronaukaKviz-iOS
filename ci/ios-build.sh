@@ -23,5 +23,9 @@ if [ "$STATUS" -ne 0 ]; then
   PORUKA=$( { grep -E "^e: |error: |\*\* BUILD FAILED" build.log; grep -A8 "What went wrong" build.log; } \
     | sed 's|file://[^ ]*/composeApp/src/|src/|g' | awk '!seen[$0]++' | head -80 | sed ':a;N;$!ba;s/%/%25/g;s/\n/%0A/g')
   echo "::error title=Build greske::${PORUKA}"
+  # Isto i u sažetak builda (vidljiv na stranici builda bez prijave)
+  if [ -n "$GITHUB_STEP_SUMMARY" ]; then
+    { echo "### Build greske"; echo '```'; printf '%b\n' "$(echo "$PORUKA" | sed 's/%0A/\\n/g;s/%25/%/g')"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+  fi
 fi
 exit "$STATUS"
