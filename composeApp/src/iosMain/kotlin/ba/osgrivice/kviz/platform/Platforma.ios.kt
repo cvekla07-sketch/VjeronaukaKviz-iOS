@@ -40,3 +40,11 @@ actual fun kreirajDataStore(ime: String): DataStore<Preferences> =
 
 actual fun verzijaAplikacije(): String =
     NSBundle.mainBundle.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String ?: "?"
+
+actual object LokalniKljucevi {
+    private val ud get() = platform.Foundation.NSUserDefaults.standardUserDefaults
+    actual fun citaj(kljuc: String): String? = ud.stringForKey(kljuc)
+    actual fun pisi(kljuc: String, vrijednost: String?) {
+        if (vrijednost == null) ud.removeObjectForKey(kljuc) else ud.setObject(vrijednost, forKey = kljuc)
+    }
+}

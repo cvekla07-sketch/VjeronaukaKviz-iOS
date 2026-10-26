@@ -2,6 +2,9 @@ package ba.osgrivice.kviz
 
 import ba.osgrivice.kviz.data.local.KvizDatabase
 import ba.osgrivice.kviz.data.prefs.ProfilStore
+import ba.osgrivice.kviz.data.remote.AdminFirestore
+import ba.osgrivice.kviz.data.remote.CloudSadrzaj
+import ba.osgrivice.kviz.data.remote.FirebaseSync
 import ba.osgrivice.kviz.data.repository.BedzeviRepository
 import ba.osgrivice.kviz.data.repository.NapredakRepository
 import ba.osgrivice.kviz.data.repository.PitanjaRepository
@@ -32,7 +35,14 @@ class AppContainer {
         BedzeviRepository(db.bedzDao(), pitanjaRepository, napredakRepository)
     }
 
-    // Dio 4: firebaseSync, adminFirestore, cloudSadrzaj (Firebase)
+    val firebaseSync: FirebaseSync by lazy {
+        FirebaseSync(profilStore, napredakRepository, pitanjaRepository, bedzeviRepository, db.sesijaDao(), verzija)
+    }
+
+    val adminFirestore: AdminFirestore by lazy { AdminFirestore() }
+
+    /** Ispravke pitanja iz Admin Toola (Firestore) — bez nove verzije aplikacije. */
+    val cloudSadrzaj: CloudSadrzaj by lazy { CloudSadrzaj(db) }
 
     /** versionName iz manifesta — prikaz na profilu i slanje u Firestore. */
     val verzija: String = runCatching { verzijaAplikacije() }.getOrDefault("?")

@@ -19,3 +19,9 @@ expect fun kreirajDataStore(ime: String): androidx.datastore.core.DataStore<andr
 
 /** versionName aplikacije (iOS: CFBundleShortVersionString). */
 expect fun verzijaAplikacije(): String
+
+/** Mali trajni ključ-vrijednost zapis (iOS: NSUserDefaults) — za Firebase prijavu. */
+expect object LokalniKljucevi {
+    fun citaj(kljuc: String): String?
+    fun pisi(kljuc: String, vrijednost: String?)
+}
