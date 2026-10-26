@@ -15,6 +15,7 @@ import platform.Foundation.NSUserDomainMask
 import platform.Foundation.create
 import platform.Foundation.decomposedStringWithCanonicalMapping
 import platform.Foundation.timeIntervalSince1970
+import platform.Foundation.writeToFile
 
 actual fun sadaMs(): Long = (NSDate().timeIntervalSince1970 * 1000.0).toLong()
 

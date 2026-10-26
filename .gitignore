@@ -19,3 +19,5 @@ GoogleService-Info.plist
 *.p12
 *.mobileprovision
 build.log
+archive.log
+export.log
