@@ -31,20 +31,9 @@ jobs:
           path: ~/.konan
           key: konan-${{ runner.os }}-${{ hashFiles('gradle/libs.versions.toml') }}
 
-      - name: Priprema
-        run: |
-          chmod +x gradlew
-          brew install xcodegen
-          cd iosApp && xcodegen generate
+      - name: XcodeGen
+        run: brew install xcodegen
 
+      # Sve ostalo je u ci/ios-build.sh (lakše za izmjene bez diranja ovog fajla)
       - name: Build (simulator, bez potpisa)
-        run: |
-          xcodebuild \
-            -project iosApp/iosApp.xcodeproj \
-            -scheme iosApp \
-            -configuration Debug \
-            -sdk iphonesimulator \
-            -destination 'generic/platform=iOS Simulator' \
-            ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
-            CODE_SIGNING_ALLOWED=NO \
-            build
+        run: bash ci/ios-build.sh
