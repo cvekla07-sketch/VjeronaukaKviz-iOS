@@ -13,3 +13,9 @@ object Log {
     fun w(tag: String, msg: String) = println("W/$tag: $msg")
     fun e(tag: String, msg: String, t: Throwable? = null) = println("E/$tag: $msg ${t?.message ?: ""}")
 }
+
+/** DataStore fajl "<ime>.preferences_pb" u folderu aplikacije (zamjena za Context.preferencesDataStore). */
+expect fun kreirajDataStore(ime: String): androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences>
+
+/** versionName aplikacije (iOS: CFBundleShortVersionString). */
+expect fun verzijaAplikacije(): String
