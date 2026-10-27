@@ -89,6 +89,7 @@ import ba.osgrivice.kviz.ui.theme.OkBg
 import ba.osgrivice.kviz.ui.theme.OsmokrakaShape
 import ba.osgrivice.kviz.ui.theme.PozadinaRezultat
 import ba.osgrivice.kviz.ui.theme.Safran
+import ba.osgrivice.kviz.ui.theme.Safran2
 import ba.osgrivice.kviz.ui.theme.SafranTamno
 import ba.osgrivice.kviz.ui.theme.Siva
 import ba.osgrivice.kviz.ui.theme.Tackica
@@ -140,7 +141,15 @@ fun KvizScreen(
             },
             naOdgovor = vm::odgovori,
             naUnos = vm::promijeniUnos,
-            naNastavi = vm::nastavi
+            naNastavi = vm::nastavi,
+            dopunaAkcije = remember(vm) {
+                DopunaAkcije(
+                    naKarticu = vm::odaberiKarticu,
+                    naPrazninu = vm::isprazniPrazninu,
+                    naUnos = vm::promijeniUnosPraznine,
+                    naProvjeri = vm::provjeriDopunu
+                )
+            }
         )
         KvizFaza.REZULTAT -> {
             RezultatEkran(state, naPocetna = naIzlaz, naSljedecu = naSljedecu)
@@ -161,7 +170,8 @@ private fun PitanjeEkran(
     naZatvori: () -> Unit,
     naOdgovor: (String) -> Unit,
     naUnos: (String) -> Unit,
-    naNastavi: () -> Unit
+    naNastavi: () -> Unit,
+    dopunaAkcije: DopunaAkcije
 ) {
     val p = state.trenutno ?: return
     val haptika = LocalHapticFeedback.current
@@ -205,12 +215,20 @@ private fun PitanjeEkran(
                         }
                     } ?: Text("Ponavljanje", style = MaterialTheme.typography.labelMedium, color = Tirkiz2)
                     Spacer(Modifier.height(8.dp))
-                    Text(pit.tekst, style = MaterialTheme.typography.headlineSmall, color = Tinta)
+                    // "Dopuni" stanje pripada samo trenutnom pitanju (ne onom koje animacijom odlazi)
+                    val dopuna = if (idx == state.index) state.dopuna else null
+                    if (dopuna != null && dopuna.struktura.uTekstu) {
+                        TekstSaPrazninama(pit, dopuna, dopunaAkcije)
+                    } else {
+                        Text(pit.tekst, style = MaterialTheme.typography.headlineSmall, color = Tinta)
+                    }
                     Spacer(Modifier.height(22.dp))
                     when (pit.tip) {
                         TipPitanja.ABCD -> OpcijeAbcd(pit, state, naOdgovor)
                         TipPitanja.TACNO_NETACNO -> OpcijeTn(pit, state, naOdgovor)
-                        TipPitanja.DOPUNI -> UnosDopuni(state, naUnos, naOdgovor)
+                        TipPitanja.DOPUNI ->
+                            if (dopuna != null) DopunaUnos(state, dopuna, dopunaAkcije)
+                            else UnosDopuni(state, naUnos, naOdgovor)
                     }
                     Spacer(Modifier.height(220.dp))
                 }
@@ -397,7 +415,7 @@ private fun UnosDopuni(state: KvizUiState, naUnos: (String) -> Unit, naOdgovor: 
 }
 
 @Composable
-private fun Dugme(tekst: String, omoguceno: Boolean = true, pozadina: Color, tekstBoja: Color, naKlik: () -> Unit) {
+internal fun Dugme(tekst: String, omoguceno: Boolean = true, pozadina: Color, tekstBoja: Color, naKlik: () -> Unit) {
     val interaction = remember { MutableInteractionSource() }
     Box(
         Modifier
@@ -414,7 +432,8 @@ private fun Dugme(tekst: String, omoguceno: Boolean = true, pozadina: Color, tek
 
 @Composable
 private fun FeedbackPanel(p: Pitanje, state: KvizUiState, naNastavi: () -> Unit) {
-    val boja = if (state.tacno) Ok else Ne
+    val djelimicno = !state.tacno && (state.dopuna?.ocjena?.tacnih ?: 0) > 0
+    val boja = if (state.tacno) Ok else if (djelimicno) Safran2 else Ne
     val zadnje = state.index + 1 >= state.ukupno
     Surface(color = Color.White, shape = RoundedCornerShape(topStart = 26.dp, topEnd = 26.dp), shadowElevation = 20.dp) {
         Column(
@@ -427,8 +446,13 @@ private fun FeedbackPanel(p: Pitanje, state: KvizUiState, naNastavi: () -> Unit)
                     Text(if (state.tacno) "✓" else "✕", color = Color.White, fontWeight = FontWeight.ExtraBold)
                 }
                 Spacer(Modifier.width(10.dp))
+                val ocjena = state.dopuna?.ocjena
                 Text(
-                    if (state.tacno) (if (state.uzastopnoTacnih >= 3) "Tačno! Niz od ${state.uzastopnoTacnih}" else "Tačno!") else "Nije tačno",
+                    when {
+                        state.tacno -> if (state.uzastopnoTacnih >= 3) "Tačno! Niz od ${state.uzastopnoTacnih}" else "Tačno!"
+                        ocjena != null && ocjena.ukupno > 1 -> "Tačno ${ocjena.tacnih} / ${ocjena.ukupno}"
+                        else -> "Nije tačno"
+                    },
                     style = MaterialTheme.typography.titleLarge,
                     color = boja
                 )
@@ -436,7 +460,9 @@ private fun FeedbackPanel(p: Pitanje, state: KvizUiState, naNastavi: () -> Unit)
             if (!state.tacno) {
                 Spacer(Modifier.height(10.dp))
                 Text("Tačan odgovor", style = MaterialTheme.typography.labelMedium, color = Siva)
-                Text(ProvjeraOdgovora.tekstTacnog(p), style = MaterialTheme.typography.titleMedium, color = Tinta)
+                val d = state.dopuna
+                if (d?.ocjena != null && d.struktura.brojPraznina > 1) DopunaTacniDijelovi(d)
+                else Text(ProvjeraOdgovora.tekstTacnog(p), style = MaterialTheme.typography.titleMedium, color = Tinta)
             }
             if (!p.objasnjenje.isNullOrBlank()) {
                 Spacer(Modifier.height(8.dp))

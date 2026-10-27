@@ -1,5 +1,5 @@
 {
-  "verzija": 5,
+  "verzija": 6,
   "lekcije": [
     {
       "id": "r8_c01",
@@ -3878,8 +3878,8 @@
       "tip": "dopuni",
       "tekst": "Za svako objašnjenje napiši odgovarajući pojam (10 pojmova, redom): 1. ____ - ćud, moral, odgoj, etika; 2. ____ - životopis Muhammeda, a.s.; 3. ____ - je riječ ili pridjev izraz u arapskom jeziku koji doslovno znači starješina - poglavar islama; 4. ____ - vijeće muslimanskih učenjaka; 5. ____ - najviši izvršni, vjerski i administrativni organ u Islamskoj zajednici; 6. ____ - pravni akt, zakon; 7. ____ - organizacija mektebske nastave, medresa i drugih oblika odgoja i obrazovanja; 8. ____ - titula vjerskog poglavara muslimana u Bosni i Hercegovini i njenoj dijaspori; 9. ____ - zamjenik reisu-l-uleme; 10. ____ - glavni vjerski poglavar na određenom prostoru, tj. muftijstvu/muftiluku.",
       "opcije": [],
-      "tacno": "Ahlak Sira Šejhu-l-islam Ulema medžlis Rijaset Statut Mearifski poslovi Reisu-l-ulema Naibu-reis Muftija",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "Ahlak; Sira; Šejhu-l-islam; Ulema medžlis; Rijaset; Statut; Mearifski poslovi; Reisu-l-ulema; Naibu-reis; Muftija",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -3889,8 +3889,8 @@
       "tip": "dopuni",
       "tekst": "Allah, dž.š., u Kur'anu kaže (4 dijela koja fale, redom): „Kakva god vas ____ zadesi, to je zbog ____ koje ste zaradili, a Allah mnogo prašta.“ „Nered se pojavio na kopnu i moru, jer je svijet to ____ zaradio, Allah, dž.š., hoće da iskuse ____ zbog onoga što rade.“",
       "opcije": [],
-      "tacno": "nesreća grijehova ružnim postupkom posljedice",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "nesreća; grijehova; ružnim postupkom; posljedice",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -3898,10 +3898,10 @@
       "razred": 8,
       "lekcija": "r8_c04",
       "tip": "dopuni",
-      "tekst": "Dopuni hadis (5 dijelova koja fale, redom): „Ko učini neko ____, bio on musliman ili nemusliman, Allah će ga nagraditi na _______ ili onome svijetu. Tako mi Allaha u čijoj je moći ____, poslije smrti nema ____, poslije ____ nema staništa osim ___________________. Koga unazade njegova______________ ne može ga unaprijediti njegovo ____.“ Ovo su riječi Muhammeda, a.s., iz govora na _________________________.",
+      "tekst": "Dopuni hadis (9 dijelova koja fale, redom): „Ko učini neko ____, bio on musliman ili nemusliman, Allah će ga nagraditi na _______ ili onome svijetu. Tako mi Allaha u čijoj je moći ____, poslije smrti nema ____, poslije ____ nema staništa osim ___________________. Koga unazade njegova______________ ne može ga unaprijediti njegovo ____.“ Ovo su riječi Muhammeda, a.s., iz govora na _________________________.",
       "opcije": [],
-      "tacno": "dobro ovome Muhammedov život pokajanja  dunjaluka Dženneta ili Džehennema  loša djela porijeklo Oproštajnom hadžu",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "dobro; ovome; Muhammedov život; pokajanja; dunjaluka; Dženneta ili Džehennema; loša djela; porijeklo; Oproštajnom hadžu",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -3911,8 +3911,8 @@
       "tip": "dopuni",
       "tekst": "Prema hadisu Muhammeda, a.s., čovjeku će biti oprošteni grijesi između dvije džume, ako se petkom: - ____, - ____, - ____, - ____, - ____, -_____, - ____, - to će mu biti otkup za ono što je pogriješio između te i prošle džume.",
       "opcije": [],
-      "tacno": "okupa upotrijebi misvak namiriše se obuče najljepše odijelo dođe na džumu ne prekoračivši preko ljudi klanja ono što je Allah naredio šuti kad imam izađe na mimber pa sve dok ne završi namaz",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "okupa; upotrijebi misvak; namiriše se; obuče najljepše odijelo; dođe na džumu ne prekoračivši preko ljudi; klanja ono što je Allah naredio; šuti kad imam izađe na mimber pa sve dok ne završi namaz",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -3922,7 +3922,7 @@
       "tip": "dopuni",
       "tekst": "Dopuni riječi koje nedostaju u prijevodu hadisa! „Neka niko od vas ne _____ smrt zbog _____ koja ga je ____, već neka kaže: Allahu, Ti mi daj da živim sve dok je _____ bolji za mene, a ______ me ako je smrt za mene bolja.“",
       "opcije": [],
-      "tacno": "priželjkuje nesreće snašla život usmrti",
+      "tacno": "priželjkuje; nesreće; snašla; život; usmrti",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -4448,9 +4448,9 @@
       "razred": 9,
       "lekcija": "r9_c01",
       "tip": "dopuni",
-      "tekst": "Dopuni ajet: „Gospodar tvoj zapovijeda ______ …”",
+      "tekst": "Dopuni ajet: „Gospodar tvoj zapovijeda ____ ____ ____ ____ …”",
       "opcije": [],
-      "tacno": "DA SE SAMO NJEMU",
+      "tacno": "DA; SE; SAMO; NJEMU",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -4648,7 +4648,7 @@
       "tip": "dopuni",
       "tekst": "Prijevod dove: „Ja mukallibel-l-kulubi sebbit kalbi ‘ala dinik.”",
       "opcije": [],
-      "tacno": "O TI KOJI PREOKREĆEŠ SRCA, UČVRSTI MOJE SRCE U TVOJOJ VJERI.",
+      "tacno": "O TI KOJI; PREOKREĆEŠ SRCA; UČVRSTI MOJE SRCE; U TVOJOJ VJERI.",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -4800,9 +4800,9 @@
       "razred": 9,
       "lekcija": "r9_c11",
       "tip": "dopuni",
-      "tekst": "Poređaj pojmove po redu: misli, riječi, djela, navika, karakter, sudbina.",
+      "tekst": "Poređaj pojmove po redu, od misli do sudbine.",
       "opcije": [],
-      "tacno": "MISLI – RIJEČI – DJELA – NAVIKA – KARAKTER – SUDBINA",
+      "tacno": "MISLI; RIJEČI; DJELA; NAVIKA; KARAKTER; SUDBINA",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -4868,7 +4868,7 @@
       "tip": "dopuni",
       "tekst": "Napiši prijevod sure El-Asr.",
       "opcije": [],
-      "tacno": "TAKO MI VREMENA, ČOVJEK, DOISTA, GUBI, SAMO NE ONI KOJI VJERUJU I DOBRA DJELA ČINE, I KOJI JEDNI DRUGIMA ISTINU PREPORUČUJU, I KOJI JEDNI DRUGIMA PREPORUČUJU STRPLJENJE.",
+      "tacno": "TAKO MI VREMENA; ČOVJEK, DOISTA, GUBI; SAMO NE ONI KOJI VJERUJU; I DOBRA DJELA ČINE; I KOJI JEDNI DRUGIMA; ISTINU PREPORUČUJU; I KOJI JEDNI DRUGIMA; PREPORUČUJU STRPLJENJE",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -6218,7 +6218,7 @@
         "Dostojevskom",
         "Ibrahimu ibn Edhemu"
       ],
-      "tacno": "C",
+      "tacno": "B",
       "objasnjenje": null,
       "aktivno": true
     },
@@ -8190,8 +8190,8 @@
       "tip": "dopuni",
       "tekst": "Dopuni ajet (4 riječi koje fale, redom): „... A kada se ____, onda se ____ u ____, jer Allah zaista voli one koji se uzdaju u ____.“ (Alu 'Imran, 159)",
       "opcije": [],
-      "tacno": "odlučiš pouzdaj Allaha Njega",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "odlučiš; pouzdaj; Allaha; Njega",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -8201,8 +8201,8 @@
       "tip": "dopuni",
       "tekst": "Dopuni hadis (5 dijelova koja fale, redom): „____ je onaj koji svoju dušu obračunava i radi za ono što će doći ____, dok je ____ onaj koji svoju dušu ____, a nada se i priželjkuje od ____.“",
       "opcije": [],
-      "tacno": "Pametan poslije smrti slabić prepusti strastima Allaha",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "Pametan; poslije smrti; slabić; prepusti strastima; Allaha",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -8210,9 +8210,9 @@
       "razred": 9,
       "lekcija": "r9_c20",
       "tip": "dopuni",
-      "tekst": "Upari pojmove sa značenjima i upiši redoslijed brojeva (A, B, C, D, E, F): A) Religioznost, B) Sekta, C) Satanizam, D) Astrologija, E) Hiromantija, F) New age — 1) pokret čiji se sljedbenici klanjaju satani, 2) mješavina različitih okultnih učenja, 3) mala grupa istomišljenika koji su se odvojili od matice religije, 4) vjerovanje da položaj planeta utječe na ljudsko ponašanje, 5) vjerovanje da crte na dlanu daju informacije, 6) pripadanje religiji.",
+      "tekst": "Upari pojmove sa značenjima.",
       "opcije": [],
-      "tacno": "6 3 1 4 5 2",
+      "tacno": "Religioznost — pripadanje religiji; Sekta — mala grupa istomišljenika koji su se odvojili od matice religije; Satanizam — pokret čiji se sljedbenici klanjaju satani; Astrologija — vjerovanje da položaj planeta utječe na ljudsko ponašanje; Hiromantija — vjerovanje da crte na dlanu daju informacije; New age — mješavina različitih okultnih učenja",
       "objasnjenje": "Tačan redoslijed: A-6, B-3, C-1, D-4, E-5, F-2.",
       "aktivno": true
     },
@@ -8223,8 +8223,8 @@
       "tip": "dopuni",
       "tekst": "Dopuni hadis (5 dijelova koja fale, redom): „Ko ode ____ pitati ga za nešto i ____ ono što kaže, neće mu biti ____ ____ ____ dana.“",
       "opcije": [],
-      "tacno": "vidovnjaku povjeruje mu primljen namaz četrdeset",
-      "objasnjenje": "Sve riječi razdvojene razmakom, redoslijedom kako se pojavljuju.",
+      "tacno": "vidovnjaku; povjeruje mu; primljen; namaz; četrdeset",
+      "objasnjenje": null,
       "aktivno": true
     },
     {
@@ -8232,9 +8232,9 @@
       "razred": 9,
       "lekcija": "r9_c20",
       "tip": "dopuni",
-      "tekst": "Navedi 5 dužnosti roditelja prema djeci od momenta rođenja (svaka dužnost odvojena razmakom u jednom redu): 1. ezan, 2. akika, 3. nadijevanje imena, 4. sunećenje, 5. zahvala Allahu.",
+      "tekst": "Navedi redom 5 dužnosti roditelja prema djeci od momenta rođenja.",
       "opcije": [],
-      "tacno": "ezan akika nadijevanje sunećenje zahvala",
+      "tacno": "ezan; akika; nadijevanje imena; sunećenje; zahvala Allahu",
       "objasnjenje": "Tačan redoslijed: ezan, akika, nadijevanje imena, sunećenje, zahvala Allahu.",
       "aktivno": true
     },

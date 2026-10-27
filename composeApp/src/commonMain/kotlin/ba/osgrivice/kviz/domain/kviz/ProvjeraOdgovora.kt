@@ -12,13 +12,11 @@ object ProvjeraOdgovora {
             odgovor.trim().equals(pitanje.tacno.trim(), ignoreCase = true)
 
         TipPitanja.DOPUNI -> {
-            val uneseno = normalizuj(odgovor)
-            if (uneseno.isEmpty()) false
-            else {
-                // Višedijelni odgovori su u bazi odvojeni sa ";" — prihvatamo cijeli ili bilo koji dio.
-                val prihvatljivi = pitanje.tacno.split(";").map { normalizuj(it) }.filter { it.isNotEmpty() }
-                prihvatljivi.any { it == uneseno } || normalizuj(pitanje.tacno) == uneseno
-            }
+            // Ranije: višedijelni odgovor je bio priznat ako je dijete napisalo BILO KOJI jedan dio (greška).
+            // Sada: svi dijelovi moraju biti tačni (djelimični bodovi se računaju u Dopuna.ocijeni).
+            val s = Dopuna.struktura(pitanje)
+            if (s.brojPraznina <= 1) Dopuna.slicno(odgovor, pitanje.tacno)
+            else Dopuna.ocijeni(s, odgovor.split(";")).sveTacno
         }
     }
 
