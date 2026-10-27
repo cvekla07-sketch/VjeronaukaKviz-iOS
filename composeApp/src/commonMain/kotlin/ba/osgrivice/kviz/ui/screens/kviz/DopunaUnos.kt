@@ -171,7 +171,8 @@ private fun UcenjeKartice(d: DopunaUi, akcije: DopunaAkcije) {
                             style = MaterialTheme.typography.titleSmall,
                             color = Siva,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.widthIn(min = 28.dp, max = 120.dp)
+                            // ista širina za sve oznake → polja poravnata
+                            modifier = Modifier.width(if (d.struktura.dijelovi.any { it.oznaka != null }) 112.dp else 28.dp)
                         )
                         Spacer(Modifier.width(8.dp))
                     }

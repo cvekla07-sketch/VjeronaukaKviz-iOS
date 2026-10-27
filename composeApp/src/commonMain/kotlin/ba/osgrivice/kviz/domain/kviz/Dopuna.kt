@@ -31,7 +31,7 @@ data class StrukturaDopune(
     val uTekstu: Boolean,
     /** Redoslijed je bitan (ajet, hadis, sura, "redom", "poređaj", oznake, praznine u tekstu). */
     val redoslijed: Boolean,
-    /** Uparivanje (sve stavke imaju oznaku) — i u fazi pisanja ostaje biranje kartica. */
+    /** Uparivanje ("Upari…" + sve stavke imaju oznaku) — i u fazi pisanja ostaje biranje kartica. */
     val uparivanje: Boolean,
     /** Bez pogrešnih kartica (poređaj, prijevod, uparivanje) — slažu se samo tačni dijelovi. */
     val bezPogresnih: Boolean
@@ -56,6 +56,7 @@ object Dopuna {
         RegexOption.IGNORE_CASE
     )
     private val RIJECI_BEZ_POGRESNIH = Regex("poređaj|poredaj|prijevod|upari", RegexOption.IGNORE_CASE)
+    private val RIJEC_UPARI = Regex("upari", RegexOption.IGNORE_CASE)
 
     fun struktura(p: Pitanje): StrukturaDopune {
         val dijeloviTekst = p.tacno.split(";").map { it.trim() }.filter { it.isNotEmpty() }
@@ -67,7 +68,8 @@ object Dopuna {
             } else DioOdgovora(null, d)
         }
         val uTekstu = dijelovi.size >= 2 && PRAZNINA.findAll(p.tekst).count() == dijelovi.size
-        val uparivanje = saOznakom
+        // Samo "Upari…" je uparivanje; npr. "Značenje riječi: Amin…" ima oznake, ali se na testu piše.
+        val uparivanje = saOznakom && RIJEC_UPARI.containsMatchIn(p.tekst)
         return StrukturaDopune(
             dijelovi = dijelovi,
             uTekstu = uTekstu,

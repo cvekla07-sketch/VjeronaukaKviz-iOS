@@ -40,7 +40,9 @@ private data class Stavka(val ikona: String, val naslov: String, val tekst: Stri
 private val STAVKE = listOf(
     Stavka("🗺", "Staza", "Nivoi idu redom. Pređi nivo i otvara se sljedeći."),
     Stavka("📖", "Prije kviza", "Otvori nivo i vidi sva pitanja s tačnim odgovorima. Pročitaj, pa klikni „Kreni na kviz“."),
-    Stavka("🔁", "Ponavljanje", "Što pogriješiš, aplikacija će ti sutra ponovo dati. Kad odgovoriš tačno i sutra, nivo dobija zvjezdice ★."),
+    Stavka("🔁", "Ponavljanje", "Pitanja se vraćaju dok ih ne naučiš. Pogrešno odgovoreno dolazi odmah u sljedećoj vježbi. Tačno odgovoreno se vraća sutra, pa za 3, 7, 14 i 30 dana. Tako znanje ostaje do takmičenja."),
+    Stavka("★", "Zvjezdice", "Nivo dobija zvjezdice kad pitanja odgovoriš tačno više puta, u različite dane. Za 3 zvjezdice moraš znati sva pitanja nivoa."),
+    Stavka("✍️", "Dopuni", "Prvi put slažeš ponuđene odgovore dodirom. Kad pitanje jednom tačno uradiš, sljedeći put ga pišeš — kao na testu. Svaki tačan dio se boduje. Kvačice i velika/mala slova se ne računaju."),
     Stavka("🔥", "Svaki dan", "Odgovori bar 10 pitanja dnevno da ti vatrica raste."),
     Stavka("🏆", "Simulacija", "Pravi test kao na takmičenju: 20 pitanja, 20 sekundi po pitanju, bez gledanja. Najbolji rezultat ide na rang-listu.")
 )
@@ -72,7 +74,7 @@ fun UputstvoScreen(prviPut: Boolean, naDalje: () -> Unit) {
                 }
                 Column {
                     Text("Kako se igra", style = MaterialTheme.typography.headlineMedium, color = Color.White)
-                    Text("Pet stvari koje trebaš znati", style = MaterialTheme.typography.bodyMedium, color = NocTekst)
+                    Text("Sedam stvari koje trebaš znati", style = MaterialTheme.typography.bodyMedium, color = NocTekst)
                 }
             }
             Spacer(Modifier.height(22.dp))
