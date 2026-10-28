@@ -23,10 +23,18 @@ object RasporedPonavljanja {
     const val SAVLADANO_OD_KUTIJE = 2
 
     fun nakonOdgovora(prije: NapredakPitanja, tacno: Boolean, danasDan: Long, sadaMs: Long): NapredakPitanja {
-        val novaKutija = if (tacno) (prije.kutija + 1).coerceAtMost(MAX_KUTIJA) else 0
+        // Kutija raste najviše jednom dnevno: ponovljen tačan odgovor isti dan ne gura pitanje dalje
+        // (inače 3 igre zaredom = kutija 3 i zvjezdice u jednom danu).
+        val vecDanasOdgovoreno = prije.zadnjiOdgovorMs > 0 && danasDan(prije.zadnjiOdgovorMs) == danasDan
+        val zadrziKutiju = tacno && vecDanasOdgovoreno && prije.kutija >= 1
+        val novaKutija = when {
+            !tacno -> 0
+            zadrziKutiju -> prije.kutija
+            else -> (prije.kutija + 1).coerceAtMost(MAX_KUTIJA)
+        }
         return prije.copy(
             kutija = novaKutija,
-            sljedeceDan = danasDan + INTERVALI[novaKutija],
+            sljedeceDan = if (zadrziKutiju) prije.sljedeceDan else danasDan + INTERVALI[novaKutija],
             tacnih = prije.tacnih + if (tacno) 1 else 0,
             netacnih = prije.netacnih + if (tacno) 0 else 1,
             zadnjiOdgovorMs = sadaMs

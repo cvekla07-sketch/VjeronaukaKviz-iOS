@@ -21,3 +21,6 @@ GoogleService-Info.plist
 build.log
 archive.log
 export.log
+
+# slike ekrana za App Store (lokalno)
+slike/
